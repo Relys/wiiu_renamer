@@ -33,7 +33,7 @@ def main(argv):
          e = xml.etree.ElementTree.parse(curXML).getroot()
          prodCode=e.find('product_code').text
          compCode=e.find('company_code').text
-         name=string.capwords(e.find('longname_en').text.replace('\n', ' ').replace('\r', '').replace(':',' -')).replace('Hd','HD')
+         name=e.find('longname_en').text.replace('\n', ' ').replace('\r', '').replace(':',' -').replace('BAYONETTA','Bayonetta').replace('THE LEGEND OF ZELDA','The Legend of Zelda -')
          newName=(name+' ['+prodCode[-4:]+compCode[-2:]+']')
          newFolder=os.path.join(inputFolder,newName)
          print('Renaming '+curFolder+' to '+newFolder)
