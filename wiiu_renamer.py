@@ -1,4 +1,4 @@
-#wud_renamer.py
+#wiiu_renamer.py
 #By Relys
 #January 5, 2016
 #Renames game folders in specified directory from information stored in /meta/meta.xml
@@ -33,8 +33,8 @@ def main(argv):
          e = xml.etree.ElementTree.parse(curXML).getroot()
          prodCode=e.find('product_code').text
          compCode=e.find('company_code').text
-         name=e.find('longname_en').text
-         newName=string.capwords((name+' ['+prodCode[-4:]+compCode[-2:]+']').replace('\n', ' ').replace('\r', '').replace(':',' -'))
+         name=string.capwords(e.find('longname_en').text.replace('\n', ' ').replace('\r', '').replace(':',' -')).replace('Hd','HD')
+         newName=(name+' ['+prodCode[-4:]+compCode[-2:]+']')
          newFolder=os.path.join(inputFolder,newName)
          print('Renaming '+curFolder+' to '+newFolder)
          os.rename(curFolder,newFolder)
